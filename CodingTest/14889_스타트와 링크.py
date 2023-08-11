@@ -1,10 +1,10 @@
 import sys
 
-def dfs(n):
+
+def dfs(team1):
     global ans
-    if n == N // 2:
-        team1_stat = 0
-        team2_stat = 0
+    if len(team1) == N // 2:
+        team1_stat, team2_stat = 0, 0
         team2 = []
         for i in range(N):
             if i not in team1:
@@ -17,24 +17,21 @@ def dfs(n):
                 team2_stat += stats[team2[j]][team2[i]]
         ans = min(ans, abs(team1_stat - team2_stat))
         return
+    
     for i in range(N):
-        if len(team1) and team1[-1] <= i:
+        if team1 and team1[-1] <= i:
             continue
-        else:
-            team1.append(i)
-            dfs(n + 1)
-            team1.pop()
+        dfs(team1 + [i])
+        
 
 
 N = int(sys.stdin.readline())
 stats = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-team1 = []
-
 ans = int(1e9)
-dfs(0)
+dfs([])
 print(ans)
 
-# import sys
+
 
 
 # def dfs(idx, n):
