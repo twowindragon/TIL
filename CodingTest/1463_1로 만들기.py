@@ -8,4 +8,4 @@ for i in range(2, N + 1):
     if i % 3== 0 :
         dp[i] = min(dp[i], dp[i // 3] + 1)
 
-print(dp[N], dp[:11])
+print(dp[N])

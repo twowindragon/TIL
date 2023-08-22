@@ -16,7 +16,7 @@ def bfs(x, y):
             nx = x + dx[i]
             ny = y + dy[i]
             if 0 <= nx < N and 0 <= ny < M:
-                if graph[nx][ny] == 1 and wall == 1 and dist[wall][nx][ny] == 0:
+                if graph[nx][ny] == 1 and wall == 1 and dist[wall - 1][nx][ny] == 0:
                     dist[wall - 1][nx][ny] = dist[wall][x][y] + 1
                     queue.append((0, nx, ny))
 
